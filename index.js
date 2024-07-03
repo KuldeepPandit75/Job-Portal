@@ -87,10 +87,13 @@ app.get("/user/login",(req,res)=>{
 });
 
 app.post("/user/signup",async(req,res)=>{
-    let {username,password}= req.body;
+    let {username,password,name,email,skills}= req.body;
     let newUser= new User({
         username:username,
-        pass:password
+        pass:password,
+        name: name,
+        email:email,
+        skills: skills
     });
     newUser.save()
     .then((res)=>console.log(res))
@@ -102,12 +105,20 @@ app.get("/user/signup",(req,res)=>{
     res.render("userSign.ejs");
 });
 
+app.get("/user/:id/profile",async(req,res)=>{
+    let {id}=req.params;
+    let user= await User.findById(id);
+    res.render("profile.ejs",{user});
+})
+
 app.get("/user/:id",verifyToken,(req,res)=>{
-    res.send("user");
+    let {id}=req.params;
+    res.render("userHome.ejs",{id});
 });
 
 app.get("/admin/:id",verifyToken,(req,res)=>{
-    res.send('admin');
+    let {id}=req.params;
+    res.send('adminHome.ejs',{id});
 });
 
 app.get("/check",(req,res)=>{

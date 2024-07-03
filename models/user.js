@@ -12,7 +12,19 @@ const userSchema= new mongoose.Schema({
     admin:{
         type: Boolean,
         default: false
-    }
+    },
+    name:{
+        type: String,
+        required:true
+    },
+    email:{
+        type: String,
+        required: true
+    },
+    skills:{
+        type: String,
+        required: true
+    },
 })
 
 const User= mongoose.model("User",userSchema);

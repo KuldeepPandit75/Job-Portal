@@ -1,0 +1,21 @@
+#userHomeBody{
+    padding:0;
+    margin:0;
+}
+
+.navbar{
+    background-color: bisque;
+    position: sticky;
+    top:0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.profile{
+    align-self: center;
+}
+
+#jobHead{
+    margin-left:20px;
+}
